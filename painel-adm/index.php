@@ -2,8 +2,26 @@
 
 $notificacoes = 3;
 
-?>
+// VARIÁVEIS DOS MENUS
+$item1 ='home';
+$item2 = 'medicos';
+$item3 = 'func';
+$item4 = 'notificacoes';
 
+// VERIFICAR SE O MENU CLICADO E PASSAR A CLASSE ATIVO
+    if(@$_GET['acao'] == $item1){
+        $item1ativo = 'active'; 
+    } elseif(@$_GET['acao'] == $item2  or isset($_GET[$item2])){
+        $item2ativo = 'active';
+    } elseif(@$_GET['acao'] == $item3){
+        $item3ativo = 'active';
+    } elseif(@$_GET['acao'] == $item4){
+        $item4ativo = 'active';
+    } else{
+        $item1ativo = 'active';
+    }
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -50,20 +68,35 @@ $notificacoes = 3;
             <div class="row">
                 <div class="col-md-3 col-sm-12 mb-4">
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#home" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-home mr-1"></i>Home</a>
-                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#medicos" role="tab" aria-controls="v-pills-profile" aria-selected="false"><i class="fas fa-user-md mr-1"></i>Cadastro de Médicos</a>
-                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#funcionarios" role="tab" aria-controls="v-pills-messages" aria-selected="false"><i class="fas fa-user mr-1"></i>Cadastro de Funcionários</a>
+
+                    <a class="nav-link <?php echo $item1ativo ?>" id="link-home" href="index.php?acao=<?php echo $item1 ?>" role="tab" aria-controls="v-pills-home" aria-selected="true"><i class="fas fa-home mr-1"></i>Home</a>
+
+                    <a class="nav-link <?php echo $item2ativo ?>" id="link-medicos" href="index.php?acao=<?php echo $item2 ?>" role="tab" aria-controls="v-pills-medicos" aria-selected="false"><i class="fas fa-user-md mr-1"></i>Cadastro de Médicos</a>
+
+                    <a class="nav-link <?php echo $item3ativo ?>" id="link-funcionarios" href="index.php?acao=<?php echo $item3 ?>" role="tab" aria-controls="v-pills-funcionarios" aria-selected="false"><i class="fas fa-user mr-1"></i>Cadastro de Funcionários</a>
+
                     <?php if($notificacoes > 0){ ?> <!-- Somente aparecer notificações se for maior que 0 -->
-                    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-notificacoes" aria-selected="false"><i class="fas fa-exclamation-triangle mr-1"></i>Notificações <span class="badge badge-light"><?php echo $notificacoes; ?></span></a>
+                    <a class="nav-link <?php echo $item4ativo ?>" id="link-notificaoes" href="index.php?acao=<?php echo $item4 ?>" role="tab" aria-controls="v-pills-notificacoes" aria-selected="false"><i class="fas fa-exclamation-triangle mr-1"></i>Notificações <span class="badge badge-light"><?php echo $notificacoes; ?></span></a>
                     <?php } ?> <!-- encerramento de notificações -->
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-12">
                     <div class="tab-content" id="v-pills-tabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="v-pills-home-tab"><?php include_once("home.php"); ?></div>
-                        <div class="tab-pane fade" id="medicos" role="tabpanel" aria-labelledby="v-pills-medicos-tab"><?php include_once("medicos.php"); ?></div>
-                        <div class="tab-pane fade" id="funcionarios" role="tabpanel" aria-labelledby="v-pills-funcionarios-tab"><?php include_once("func.php"); ?></div>
-                        <div class="tab-pane fade" id="v-pills-notificacoes" role="tabpanel" aria-labelledby="v-pills-notificacoes-tab">Configurações</div>
+                        <div class="tab-pane fade show active" role="tabpanel">
+                            <?php
+                                if(@$_GET['acao'] == $item1){
+                                    include_once($item1.".php"); 
+                                } elseif(@$_GET['acao'] == $item2 or isset($_GET[$item2])){
+                                    include_once($item2.".php");
+                                } elseif(@$_GET['acao'] == $item3){
+                                    include_once($item3.".php");
+                                } elseif(@$_GET['acao'] == $item4){
+                                    include_once($item4.".php");
+                                } else{
+                                    include_once($item1.".php");
+                                }
+                            ?>
+                        </div>                        
                     </div>
                 </div>
             </div>
@@ -71,6 +104,19 @@ $notificacoes = 3;
         <!-- FIM DO PAINEL -->
 
     </body>
-
 </html>
+
+
+<?php
+// EXECUTAR UM LINK HREF COM SCRIPT
+/*
+if(isset($_GET['btnbuscarMedicos'])){ 
+?>
+    <script type="text/javascript">
+        $('#link-medicos').click();
+    </script>
+
+<?php 
+    } */
+?>
 

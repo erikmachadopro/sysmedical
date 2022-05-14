@@ -88,3 +88,17 @@ navbar a:hover{
     color: #2C2B2B !important;
 }
 
+/* BOTÕES */
+
+.btn-secondary{
+    background-color: #878787 !important ;
+}
+
+.btn-secondary:hover{
+    background-color: #616161 !important ;
+}
+
+.registro{
+    font-size: 15px;
+    margin-right: 5px;
+}

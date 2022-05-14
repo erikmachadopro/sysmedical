@@ -98,6 +98,10 @@ navbar a:hover{
     background-color: #616161 !important ;
 }
 
+.botao-novo{
+    margin-bottom: 30px;
+}
+
 .registro{
     font-size: 15px;
     margin-right: 5px;

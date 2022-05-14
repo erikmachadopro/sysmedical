@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12 botao-novo">
         <button type="button" class="btn btn-secondary">Novo Médico</button>
     </div>
 </div>
@@ -23,4 +23,29 @@
             </form>
         </div>  
     </div>
+</div>
+
+<div class="table-responsive-sm mt-3">
+    <table class="table table-sm">
+    <thead class="thead-light">
+        <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Especialidade</th>
+        <th scope="col">CRM</th>
+        <th scope="col">Telefone</th>
+        <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Mark</td>
+            <td>Clínico Geral</td>
+            <td>@mdo</td>
+            <td>(62) 0000-0000</td>
+            <td><a href="#"><i class="fas fa-edit text-info"></i></a>
+                <a href="#"><i class="far fa-trash-alt text-danger"></i></a>
+            </td>
+        </tr>
+    </tbody>
+    </table>
 </div>

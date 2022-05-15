@@ -1,5 +1,11 @@
 <?php
 
+// VERIFICAÇÕES PARA O LOGIN
+@session_start();
+if(!isset($_SESSION['nome_usuario']) || $_SESSION['nivel_usuario'] != 'admin'){
+    header("location:../index.php");
+}
+
 $notificacoes = 3;
 
 // VARIÁVEIS DOS MENUS
@@ -53,10 +59,10 @@ $item4 = 'notificacoes';
                 <img class="float-left" src="../img/logo-painel.png">
                 <li class="float-right nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Administrador - Erik Machado
+                    <i class="fas fa-user mr-1"></i><?php echo $_SESSION['nome_usuario']; ?> - <?php echo $_SESSION['nivel_usuario']; ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Sair</a>
+                        <a class="dropdown-item" href="../logout.php">Sair</a>
                     </div>
                 </li>
             </div>

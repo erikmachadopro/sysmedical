@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="login-form">
-		<form action="" method="post">
+		<form action="autenticar.php" method="post">
 			<div class="logo">
 				<img src="img/logo.jpg" alt="Sys Medical">
 			</div>

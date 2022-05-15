@@ -1,29 +1,34 @@
 <?php
 
 // VERIFICAÇÕES PARA O LOGIN
+require_once("../conexao.php");
 @session_start();
 if(!isset($_SESSION['nome_usuario']) || $_SESSION['nivel_usuario'] != 'admin'){
     header("location:../index.php");
 }
 
-$notificacoes = 3;
+$notificacoes = 10;
 
 // VARIÁVEIS DOS MENUS
 $item1 ='home';
 $item2 = 'medicos';
-$item3 = 'func';
-$item4 = 'notificacoes';
+$item3 = 'funcionarios';
+$item4 = 'usuarios';
+$item5 = 'notificacoes';
+
 
 // VERIFICAR SE O MENU CLICADO E PASSAR A CLASSE ATIVO
     if(@$_GET['acao'] == $item1){
         $item1ativo = 'active'; 
     } elseif(@$_GET['acao'] == $item2  or isset($_GET[$item2])){
         $item2ativo = 'active';
-    } elseif(@$_GET['acao'] == $item3){
+    } elseif(@$_GET['acao'] == $item3 or isset($_GET[$item3])){
         $item3ativo = 'active';
-    } elseif(@$_GET['acao'] == $item4){
+    } elseif(@$_GET['acao'] == $item4 or isset($_GET[$item4])){
         $item4ativo = 'active';
-    } else{
+    } elseif(@$_GET['acao'] == $item5){
+        $item5ativo = 'active';
+    }else{
         $item1ativo = 'active';
     }
 
@@ -59,10 +64,19 @@ $item4 = 'notificacoes';
                 <img class="float-left" src="../img/logo-painel.png">
                 <li class="float-right nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user mr-1"></i><?php echo $_SESSION['nome_usuario']; ?> - <?php echo $_SESSION['nivel_usuario']; ?>
+                    <i class="fas fa-user mr-1"></i><?php echo $_SESSION['nome_usuario']; ?>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="../logout.php">Sair</a>
+                        <a class="dropdown-item disabled text-center" href="#"><?php echo $_SESSION['nivel_usuario']; ?></a>
+                        <?php if($notificacoes > 0){ ?> <!-- Somente aparecer notificações se for maior que 0 -->
+                        <a class="dropdown-item" href="index.php?acao=<?php echo $item5 ?>"><i class="fas fa-bell mr-1"></i>Notificações <span class="badge badge-light"><?php echo $notificacoes; ?></span></a>
+                        <?php } ?> <!-- encerramento de notificações -->
+                        <a class="dropdown-item" href="#"><i class="fas fa-id-badge mr-1"></i>Perfil</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-comments mr-1"></i>Mensagens</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-calendar-alt mr-1"></i>Agenda</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-sticky-note mr-1"></i>Anotações</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-user-cog mr-1"></i>Configurações</a>
+                        <a class="dropdown-item" href="../logout.php"><i class="fas fa-sign-out-alt mr-1"></i>Sair</a>
                     </div>
                 </li>
             </div>
@@ -81,8 +95,10 @@ $item4 = 'notificacoes';
 
                     <a class="nav-link <?php echo $item3ativo ?>" id="link-funcionarios" href="index.php?acao=<?php echo $item3 ?>" role="tab" aria-controls="v-pills-funcionarios" aria-selected="false"><i class="fas fa-user mr-1"></i>Cadastro de Funcionários</a>
 
+                    <a class="nav-link <?php echo $item4ativo ?>" id="link-funcionarios" href="index.php?acao=<?php echo $item4 ?>" role="tab" aria-controls="v-pills-funcionarios" aria-selected="false"><i class="fas fa-user mr-1"></i>Cadastro de Usuários</a>
+
                     <?php if($notificacoes > 0){ ?> <!-- Somente aparecer notificações se for maior que 0 -->
-                    <a class="nav-link <?php echo $item4ativo ?>" id="link-notificaoes" href="index.php?acao=<?php echo $item4 ?>" role="tab" aria-controls="v-pills-notificacoes" aria-selected="false"><i class="fas fa-exclamation-triangle mr-1"></i>Notificações <span class="badge badge-light"><?php echo $notificacoes; ?></span></a>
+                    <a class="nav-link <?php echo $item5ativo ?>" id="link-notificaoes" href="index.php?acao=<?php echo $item5 ?>" role="tab" aria-controls="v-pills-notificacoes" aria-selected="false"><i class="fas fa-exclamation-triangle mr-1"></i>Notificações <span class="badge badge-light"><?php echo $notificacoes; ?></span></a>
                     <?php } ?> <!-- encerramento de notificações -->
                     </div>
                 </div>
@@ -94,11 +110,13 @@ $item4 = 'notificacoes';
                                     include_once($item1.".php"); 
                                 } elseif(@$_GET['acao'] == $item2 or isset($_GET[$item2])){
                                     include_once($item2.".php");
-                                } elseif(@$_GET['acao'] == $item3){
+                                } elseif(@$_GET['acao'] == $item3 or isset($_GET[$item3])){
                                     include_once($item3.".php");
-                                } elseif(@$_GET['acao'] == $item4){
+                                } elseif(@$_GET['acao'] == $item4 or isset($_GET[$item4])){
                                     include_once($item4.".php");
-                                } else{
+                                } elseif(@$_GET['acao'] == $item5){
+                                    include_once($item5.".php");
+                                }else{
                                     include_once($item1.".php");
                                 }
                             ?>

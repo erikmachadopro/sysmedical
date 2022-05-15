@@ -8,7 +8,7 @@
     }
 
     $usuario = $_POST['usuario'];
-    $senha = $_POST['senha'];
+    $senha = md5($_POST['senha']);
 
     /* variável $res retorna o resultado da consulta feita no BD */
     $res = $pdo->prepare(" SELECT * from usuarios where usuario = :usuario and senha = :senha ");
@@ -34,8 +34,6 @@
             header("location:painel-medico/index.php");
             exit();
         }
-
-
         
     } else{
         echo "<script language='javascript'>

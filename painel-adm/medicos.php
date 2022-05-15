@@ -119,14 +119,8 @@
   </div>
 </div>
 
- <!--MASCARAS -->
+<!--MASCARAS -->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-      $('#telefone').mask('(00) 00000-0000');
-      $('#cpf').mask('000.000.000-00');
-      $('#crm').mask('AA/000000');
-      });
-</script>
+<script src="../js/mascaras.js"></script>

@@ -1,8 +1,10 @@
+<?php $pagina = 'usuarios'; ?>
+
 <div class="row botao-novo">
     <div class="col-md-12">
-        <a id="btn-novo" type="button" data-toggle="modal" data-target="#modal">
+        <a id="btn-novo" data-toggle="modal" data-target="#modal">
         </a>
-        <a href="index.php?acao=<?php echo $item4 ?>&funcao=novo ?>" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal">Novo Usuário</a>
+        <a href="index.php?acao=<?php echo $pagina ?>&funcao=novo" type="button" class="btn btn-secondary">Novo Usuário</a>
     </div>
 </div>
 
@@ -21,7 +23,7 @@
         <div class="float-right mr-4">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control-sm mr-sm-2" type="search" placeholder="Nome" aria-label="Pesquisar" name="txtbuscar">
-                <button class="btn btn-outline-secondary btn-sm my-2 my-sm-0" type="submit" name="<?php echo $item4; ?>"><i class="fas fa-search"></i></button>
+                <button class="btn btn-outline-secondary btn-sm my-2 my-sm-0" type="submit" name="<?php echo $pagina; ?>"><i class="fas fa-search"></i></button>
             </form>
         </div>  
     </div>
@@ -40,7 +42,7 @@
     </thead>
     <tbody>
         <?php
-            if(isset($_GET[$item4]) and $_GET['txtbuscar'] != ''){
+            if(isset($_GET[$pagina]) and $_GET['txtbuscar'] != ''){
                 $nome_buscar = '%'.$_GET['txtbuscar'].'%';
                 $res = $pdo->prepare("SELECT * from usuarios where nome LIKE :nome order by nome asc");
                 $res->bindValue(":nome", $nome_buscar);
@@ -70,8 +72,8 @@
             <td><?php echo $usuario ?></td>
             <td><?php echo $senha_original ?></td>
             <td><?php echo $nivel ?></td>
-            <td><a href="index.php?acao=<?php echo $item4 ?>&funcao=editar&id=<?php echo $id ?>"><i class="fas fa-edit text-info"></i></a>
-                <a href="index.php?acao=<?php echo $item4 ?>&funcao=excluir&id=<?php echo $id ?>"><i class="far fa-trash-alt text-danger"></i></a>
+            <td><a href="index.php?acao=<?php echo $pagina ?>&funcao=editar&id=<?php echo $id ?>"><i class="fas fa-edit text-info"></i></a>
+                <a href="index.php?acao=<?php echo $pagina ?>&funcao=excluir&id=<?php echo $id ?>"><i class="far fa-trash-alt text-danger"></i></a>
             </td>
         </tr>
         <?php } ?> <!-- FIM DO FOR -->
@@ -172,11 +174,7 @@
             $res-> execute();
 
             echo "<script language='javascript'>
-                     window.alert('Registro Inserido.');
-                  </script>";
-
-            echo "<script language='javascript'>
-                    window.location='index.php?acao=$item4';
+                    window.location='index.php?acao=$pagina';
                 </script>";
         } else{
             echo "<script language='javascript'>
@@ -227,11 +225,7 @@
             $res-> execute();
 
             echo "<script language='javascript'>
-                     window.alert('Registro Atualizado.');
-                  </script>";
-
-              echo "<script language='javascript'>
-                        window.location='index.php?acao=$item4';
+                        window.location='index.php?acao=$pagina';
                     </script>"; 
     }
  ?>
@@ -252,7 +246,7 @@
                   </script>";
 
         echo "<script language='javascript'>
-                window.location='index.php?acao=$item4';
+                window.location='index.php?acao=$pagina';
             </script>"; 
     }
 ?>

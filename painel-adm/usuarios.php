@@ -1,6 +1,8 @@
-<div class="row">
-    <div class="col-md-12 botao-novo">
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal">Novo Usuário</button>
+<div class="row botao-novo">
+    <div class="col-md-12">
+        <a id="btn-novo" type="button" data-toggle="modal" data-target="#modal">
+        </a>
+        <a href="index.php?acao=<?php echo $item4 ?>&funcao=novo ?>" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal">Novo Usuário</a>
     </div>
 </div>
 
@@ -77,13 +79,35 @@
     </table>
 </div>
 
-<!-- MODAL PARA CADASTRO --> 
-
+<!-- MODAL --> 
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cadastro de Usuários</h5>
+        <h5 class="modal-title" id="exampleModalLabel">
+            <?php if(@$_GET['funcao'] == 'editar'){
+
+                    $nome_botao = 'Editar';
+
+                    $id_usuario = $_GET['id'];
+
+                    // BUSCAR DADOS DO REGISTRO A SER EDITADO
+                    $res = $pdo->query("select * from usuarios where id = '$id_usuario'");
+                    $dados = $res->fetchAll(PDO::FETCH_ASSOC);
+                    
+                    $nome_usuario = $dados[0]['nome'];
+                    $email_usuario = $dados[0]['usuario'];
+                    $senha_usuario = $dados[0]['senha_original'];
+                    $email_usuario_rec = $dados[0]['usuario'];
+
+                    echo 'Editar Usuário'; 
+                  }else{
+                    $nome_botao = 'Salvar';
+                    echo 'Cadastro de Usuários';
+                  }
+             ?>
+        </h5>
+        
         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -92,31 +116,42 @@
         <form method="post">
             <div class="form-group">
                 <label for="">Nome</label>
-                <input type="text" class="form-control" id="" placeholder="Insira o nome" name="nome" required>
+                <input type="text" class="form-control" id="" placeholder="Insira o nome" name="nome" value="<?php echo @$nome_usuario ?>">
             </div>
         
             <div class="form-group">
                 <label for="exampleFormControlInput1">E-mail</label>
-                <input type="email" class="form-control" id="" placeholder="nome@exemplo.com" name="usuario" required>
+                <input type="email" class="form-control" id="" placeholder="nome@exemplo.com" name="usuario" value="<?php echo @$email_usuario ?>">
             </div>
 
             <div class="form-group">
                 <label for="">Senha</label>
-                <input type="text" class="form-control" id="" placeholder="Insira a senha" name="senha" required>
+                <input type="text" class="form-control" id="" placeholder="Insira a senha" name="senha" value="<?php echo @$senha_usuario ?>">
             </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        <button type="submit" name="btn-salvar" class="btn btn-success">Salvar</button>
+        <button type="submit" name="<?php echo $nome_botao ?>" class="btn btn-success"><?php echo $nome_botao ?></button>
         </form>
       </div>
     </div>
   </div>
 </div>
 
+<!-- CÓDIGO DA FUNÇÃO DO BOTÃO NOVO -->
+<?php
+    if(@$_GET['funcao'] == 'novo'){   
+?>
+    <script>
+        $('#btn-novo').click();
+    </script>
+<?php
+    }
+?>
+
 <!-- CÓDIGO DO BOTÃO SALVAR -->
  <?php
-    if(isset($_POST['btn-salvar'])){
+    if(isset($_POST['Salvar'])){
         $nome = $_POST['nome'];
         $usuario = $_POST['usuario'];
         $senha = $_POST['senha'];
@@ -140,9 +175,9 @@
                      window.alert('Registro Inserido.');
                   </script>";
 
-              echo "<script language='javascript'>
-                        window.location='index.php?acao=$item4';
-                    </script>";
+            echo "<script language='javascript'>
+                    window.location='index.php?acao=$item4';
+                </script>";
         } else{
             echo "<script language='javascript'>
                 window.alert('Usuário já cadastrado.');
@@ -154,64 +189,22 @@
 <!-- CÓDIGO DA FUNÇÃO DO BOTÃO EDITAR -->
 <?php
     if(@$_GET['funcao'] == 'editar'){
-        $id_usuario = $_GET['id'];
 
-        // BUSCAR DADOS DO REGISTRO A SER EDITADO
-        $res = $pdo->query("select * from usuarios where id = '$id_usuario'");
-        $dados = $res->fetchAll(PDO::FETCH_ASSOC);
-        
-        $nome_usuario = $dados[0]['nome'];
-        $email_usuario = $dados[0]['usuario'];
-        $senha_usuario = $dados[0]['senha_original'];
-        $email_usuario_rec = $dados[0]['usuario'];
 ?>
 
-<!-- MODAL PARA EDITAR --> 
-
-<div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Editar Usuário</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="post">
-            <div class="form-group">
-                <label for="">Nome</label>
-                <input type="text" class="form-control" id="" placeholder="Insira o nome" name="nome" value="<?php echo $nome_usuario ?>">
-            </div>
-        
-            <div class="form-group">
-                <label for="exampleFormControlInput1">E-mail</label>
-                <input type="email" class="form-control" id="" placeholder="nome@exemplo.com" name="usuario" value="<?php echo $email_usuario ?>">
-            </div>
-
-            <div class="form-group">
-                <label for="">Senha</label>
-                <input type="text" class="form-control" id="" placeholder="Insira a senha" name="senha" value="<?php echo $senha_original ?>">
-            </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        <button type="submit" name="btn-editar" class="btn btn-success">Salvar</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+    <script>
+        $('#btn-novo').click();
+    </script>
 
 <!-- CÓDIGO DO BOTÃO EDITAR -->
 <?php
-    if(isset($_POST['btn-editar'])){
+    if(isset($_POST['Editar'])){
         $nome = $_POST['nome'];
         $usuario = $_POST['usuario'];
         $senha = $_POST['senha'];
         $senha_cript = md5($senha);
 
-        // VERIFICAR SE O USUÁRIO JÁ ESTÁ CADASTRADO SOMENTE SE FPR EDITADO O USUARIO/EMAIL
+        // VERIFICAR SE O USUÁRIO JÁ ESTÁ CADASTRADO SOMENTE SE FOR EDITADO O USUARIO/EMAIL
         if($email_usuario_rec != $usuario){
             $res_c = $pdo->query("select * from usuarios where usuario = '$usuario'");
             $dados_c = $res_c->fetchAll(PDO::FETCH_ASSOC);
@@ -263,12 +256,6 @@
             </script>"; 
     }
 ?>
-
-<!-- SCRIPT PARA CHAMAR A MODAL DE EDITAR -->
-<script>
-    $("#modalEditar").modal("show");
-</script>
-
 
 <!--MASCARAS -->
 

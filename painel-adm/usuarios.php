@@ -178,8 +178,8 @@
                 </script>";
         } else{
             echo "<script language='javascript'>
-                window.alert('Usuário já cadastrado.');
-              </script>";
+                    window.alert('Usuário já cadastrado.');
+                  </script>";
         }    
     }
  ?>

@@ -2,6 +2,7 @@
 
 // VERIFICAÇÕES PARA O LOGIN
 require_once("../conexao.php");
+require_once("../config.php");
 @session_start();
 if(!isset($_SESSION['nome_usuario']) || $_SESSION['nivel_usuario'] != 'admin'){
     header("location:../index.php");

@@ -10,14 +10,44 @@
 
 <div class="row mt-4">
     <div class="col-md-6 col-sm-12">
-        <div class="float-left">
-            <label class="registro" for="exampleFormControlSelect1">Registros</label>
-            <select class="form-control-sm" id="exampleFormControlSelect1">
-                <option>10</option>
-                <option>25</option>
-                <option>50</option>
-            </select>
-        </div>
+        <form method="post">
+            <div class="float-left">
+                <select onChange="submit();" class="form-control-sm" id="FormControlSelectPagina" name="itens-pagina">
+                    <option value="">
+                        <?php echo @$_POST['itens-pagina'] ?> Registros
+                    </option>
+                    <?php 
+                        if(@$_POST['itens-pagina'] != $opcao1){
+                    ?>
+                        <option value="<?php echo $opcao1 ?>">
+                            <?php echo $opcao1 ?>
+                        </option>
+                    <?php
+                        }    
+                    ?>
+
+                    <?php 
+                        if(@$_POST['itens-pagina'] != $opcao2){
+                    ?>
+                        <option value="<?php echo $opcao2 ?>">
+                            <?php echo $opcao2 ?>
+                        </option>
+                    <?php
+                        }    
+                    ?>
+
+                    <?php 
+                        if(@$_POST['itens-pagina'] != $opcao3){
+                    ?>
+                        <option value="<?php echo $opcao3 ?>">
+                            <?php echo $opcao3 ?>
+                        </option>
+                    <?php
+                        }    
+                    ?>
+                </select>
+            </div>
+        </form>
     </div>
     <div class="col-md-6 col-sm-12">
         <div class="float-right mr-4">
@@ -42,17 +72,41 @@
     </thead>
     <tbody>
         <?php
+            // DEFINIR O NÚMERO DE ITENS POR PÁGINA
+            if(isset($_POST['itens-pagina'])){
+                $itens_por_pagina = $_POST['itens-pagina'];
+            }else{
+                $itens_por_pagina = $opcao1;
+            }
+            
+            // PEGAR A PÁGINA ATUAL
+            $pagina_pag = intval(@$_GET['pagina']);
+            $limite = $pagina_pag * $itens_por_pagina;
+
+            // CAMINHO DA PAGINAÇÃO
+            $caminho_pag = 'index.php?acao='.$pagina.'&';            
+
+            // CONFIGURAÇÃO CAMPO BUSCAR
             if(isset($_GET[$pagina]) and $_GET['txtbuscar'] != ''){
                 $nome_buscar = '%'.$_GET['txtbuscar'].'%';
-                $res = $pdo->prepare("SELECT * from usuarios where nome LIKE :nome order by nome asc");
+                $res = $pdo->prepare("SELECT * from usuarios where nome LIKE :nome order by nome asc LIMIT $limite, $itens_por_pagina");
                 $res->bindValue(":nome", $nome_buscar);
                 $res->execute();
             } else{
-                $res = $pdo->query("SELECT * from usuarios order by nome asc");
+                $res = $pdo->query("SELECT * from usuarios order by nome asc LIMIT $limite, $itens_por_pagina");
+                
             }
 
             // VÁRIAS LINHAS DE RESULTADO
             $dados = $res->fetchAll(PDO::FETCH_ASSOC);
+
+            // TOTALIZAR OS REGISTROS PARA PAGINAÇÃO
+            $res_todos = $pdo->query("SELECT * from usuarios");
+            $dados_total = $res_todos->fetchAll(PDO::FETCH_ASSOC);
+            $num_total = count($dados_total);
+
+            // DEFINIR O TOTAL DE PÁGINAS
+            $num_paginas = ceil($num_total/$itens_por_pagina);
 
             for ($i=0; $i < count($dados); $i++){
                 foreach ($dados[$i] as $key => $value){
@@ -79,6 +133,38 @@
         <?php } ?> <!-- FIM DO FOR -->
     </tbody>
     </table>
+
+    <!-- AREA DA PAGINAÇÃO -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+            <li class="page-item">
+                <a class="btn btn-outline-dark btn-sm mr-1" href="<?php echo $caminho_pag; ?>pagina=0" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                </a>
+            </li>
+            <?php 
+                for($i=0; $i < $num_paginas; $i++){
+                $estilo = "";
+                if($pagina_pag == $i)
+                $estilo = "active";
+            ?>
+                <li class="page-item">
+                    <a class="btn btn-outline-dark btn-sm mr-1 <?php echo $estilo; ?>" href="<?php echo $caminho_pag; ?>pagina=<?php echo $i; ?>"><?php echo $i+1; ?></a>
+                </li>
+            <?php 
+                } 
+            ?>
+            
+            <li class="page-item">
+                <a class="btn btn-outline-dark btn-sm" href="<?php echo $caminho_pag; ?>pagina=<?php echo $num_paginas-1; ?>" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
 </div>
 
 <!-- MODAL --> 

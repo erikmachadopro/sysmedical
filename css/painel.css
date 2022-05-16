@@ -106,3 +106,9 @@ navbar a:hover{
     font-size: 15px;
     margin-right: 5px;
 }
+
+/* PAGINAÇÃO */
+
+.paginacao{
+    margin-top: 25px;
+}

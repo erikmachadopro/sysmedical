@@ -135,7 +135,7 @@
     </table>
 
     <!-- AREA DA PAGINAÇÃO -->
-    <nav aria-label="Page navigation example">
+    <nav class="paginacao" aria-label="Navigation">
         <ul class="pagination">
             <li class="page-item">
                 <a class="btn btn-outline-dark btn-sm mr-1" href="<?php echo $caminho_pag; ?>pagina=0" aria-label="Previous">

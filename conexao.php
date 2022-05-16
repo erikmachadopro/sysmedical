@@ -1,5 +1,7 @@
 <?php
 
+date_default_timezone_set('America/Sao_Paulo');
+
 try{
     $pdo = new PDO("mysql:dbname=sysmedical;host=localhost", "root", "");
 }catch (Exception $e){

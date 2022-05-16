@@ -1,5 +1,6 @@
 <?php
 require_once("conexao.php");
+require_once("config.php");
 ?>
 
 <!DOCTYPE html>
@@ -103,7 +104,32 @@ require_once("conexao.php");
 			echo "<script language='javascript'>
 					window.alert('E-mail não cadastrado.');
 					</script>";
+					exit();
 		}
+
+		// CÓDIGO DE ENVIO DO E-MAIL
+
+		$to = $email_usuario;
+		$subject = 'Recuperação de Senha SysMedical';
+
+		$message = "
+
+		Olá $nome_usu. 
+		<br><br> Sua senha é <b>$senha_usu </b>
+
+		<br><br> Ir Para o Sistema -> <a href='$url_site' target='_blank'> Clique Aqui </a>
+		";
+
+		$remetente = $email_adm;
+		$headers = 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=utf-8;' . "\r\n";
+		$headers .= "From: " .$remetente;
+		mail($to, $subject, $message, $headers);
+
+
+		echo "<script language='javascript'>window.alert('Sua senha foi enviada no seu email, verifique no spam ou lixo eletrônico!!'); </script>";
+
+		echo "<script language='javascript'>window.location='index.php'; </script>";
 	}
 ?>
 

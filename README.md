@@ -29,7 +29,3 @@ Aqui é criado a página de usuários, assim como o banco de dados sysmedical, c
 Também realizo a criptografia MD5 da senha, criado as funções dos botões salvar, editar, excluir.
 Realizo a implantação de páginação e campo de busca.
 </p>
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c757f304bf3095b43b3a6cd4d626cd57c0f4b60

@@ -63,7 +63,7 @@ $item5 = 'notificacoes';
         <nav class="navbar navbar-light bg-light">
             <div class="col-md-12">
                 <img class="float-left" src="../img/logo-painel.png">
-                <li class="float-right nav-item dropdown">
+                <li class="float-right nav-item dropdown mr-4">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-user mr-1"></i><?php echo $_SESSION['nome_usuario']; ?>
                     </a>

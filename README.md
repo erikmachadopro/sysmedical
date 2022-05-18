@@ -3,14 +3,14 @@ Repositório do Sistema Hospitalar Sysmedical em PHP7 com PDO
 <br><br>
 Veja as outras branchs para ver a evolução do sistema.
 <br><br>
-Link do sistema: http://erikmachadopro.com/sysmedical
+<strong>Link do sistema:</strong> http://erikmachadopro.com/sysmedical
 <br><br>
-Usuários de teste:
+<strong>Usuários de teste:</strong>
 <br><br>
-Administrador <br>
-Usuário: teste@teste.com<br>
-Senha: 123<br><br>
+<strong>Administrador</strong><br>
+<strong>Usuário:</strong> teste@teste.com<br>
+<strong>Senha:</strong> 123<br><br>
 
-Médico<br>
-Usuário: medico@teste.com <br>
-Senha: 123<br>
+<strong>Médico</strong><br>
+<strong>Usuário:</strong> medico@teste.com <br>
+<strong>Senha:</strong> 123<br>

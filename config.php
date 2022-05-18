@@ -7,9 +7,9 @@ $senha = '';
 $banco = 'sysmedical';
 
 // VALORES PARA A COMBOBOX DE PAGINAÇÃO
-$opcao1 = 2;
-$opcao2 = 4;
-$opcao3 = 6;
+$opcao1 = 10;
+$opcao2 = 25;
+$opcao3 = 50;
 
 // VARIAVEL PARA DEFINIR O CAMINHO DO SISTEMA
 $url_site = 'http://localhost/sysmedical/';

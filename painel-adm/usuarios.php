@@ -100,12 +100,12 @@
             // CONFIGURAÇÃO CAMPO BUSCAR
             if(isset($_GET[$pagina]) and $_GET['txtbuscar'] != ''){
                 $nome_buscar = '%'.$_GET['txtbuscar'].'%';
-                $res = $pdo->prepare("SELECT * from usuarios where nome LIKE :nome order by nome asc LIMIT $limite, $itens_por_pagina");
+                $res = $pdo->prepare("SELECT * from usuarios where nome LIKE :nome order by nome asc");
                 $res->bindValue(":nome", $nome_buscar);
                 $res->execute();
             } else{
-                $res = $pdo->query("SELECT * from usuarios order by nome asc LIMIT $limite, $itens_por_pagina");
-                
+                // ORDENAR PELO ÚLTIMO CADASTRO REALIZADO
+                $res = $pdo->query("SELECT * from usuarios order by id desc LIMIT $limite, $itens_por_pagina");    
             }
 
             // VÁRIAS LINHAS DE RESULTADO
@@ -145,6 +145,10 @@
     </tbody>
     </table>
 
+<?php
+    // MOSTRAR A PAGINAÇÃO SÓ SE NÃO HOUVER BUSCA
+    if(!isset($_GET[$pagina])){
+?>
     <!-- AREA DA PAGINAÇÃO -->
     <nav class="paginacao" aria-label="Navigation">
         <ul class="pagination">
@@ -175,7 +179,9 @@
             </li>
         </ul>
     </nav>
-
+<?php
+    } // FIM DO MOSTRAR A PAGINAÇÃO SÓ SE NÃO HOUVER BUSCA
+?>
 </div>
 
 <!-- MODAL --> 
@@ -286,7 +292,6 @@
     if(@$_GET['funcao'] == 'editar'){
 
 ?>
-
     <script>
         $('#btn-novo').click();
     </script>

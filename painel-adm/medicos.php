@@ -48,7 +48,7 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="">Nome</label>
-                                <input type="text" class="form-control" id="nome" placeholder="Insira o nome" name="nome" required>
+                                <input type="text" class="form-control" id="nome" placeholder="Insira o nome" name="nome" required  autofocus>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
@@ -109,10 +109,11 @@
 <!-- AJAX PARA INSERÇÃO DOS DADOS -->
 <script type="text/javascript">
     $(document).ready(function(){
+        var pag = "<?=$pagina?>";
         $('#btn-salvar').click(function(event){
             event.preventDefault();
             $.ajax({
-                url: "medicos/inserir.php",
+                url: pag + "/inserir.php",
                 method: "post",
                 data: $('form').serialize(),
                 dataType: "text",
@@ -127,6 +128,8 @@
                         $('#cpf').val('')
                         $('#telefone').val('')
                         $('#email').val('')
+
+                        $('#txtbuscar').val('')
                     }else{
                         $('#mensagem').addClass('mensagem-erro')
                     }
@@ -140,8 +143,9 @@
 <!-- AJAX PARA LISTAR OS DADOS -->
 <script type="text/javascript">
     $(document).ready(function(){
+        var pag = "<?=$pagina?>";
         $.ajax({
-            url: "medicos/listar.php",
+            url: pag + "/listar.php",
             dataType: "html",
             success: function(result){
                 $('#listar').html(result)   
@@ -153,11 +157,12 @@
 <!-- AJAX PARA BUSCAR DADOS -->
 <script type="text/javascript">
     $(document).ready(function(){
+        var pag = "<?=$pagina?>";
         $('#btn-buscar').click(function(event){
             event.preventDefault();
 
             $.ajax({
-                url: "medicos/listar.php",
+                url: pag + "/listar.php",
                 method: "post",
                 data: $('form').serialize(),
                 dataType: "html",

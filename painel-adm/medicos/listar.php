@@ -2,6 +2,8 @@
 
     include_once("../../conexao.php");
 
+    $txtbuscar = '%'.@$_POST['txtbuscar'].'%';
+
     echo '<div class="table-responsive-sm mt-3">
             <table class="table table-sm">
                 <thead class="thead-light">
@@ -16,7 +18,12 @@
                     </tr>
                 </thead>'; 
     
-            $res = $pdo->query("SELECT * from medicos order by id desc");
+            if($txtbuscar == ''){
+                $res = $pdo->query("SELECT * from medicos order by id desc");
+            }else{
+                $res = $pdo->query("SELECT * from medicos where nome LIKE '$txtbuscar' or crm LIKE '$txtbuscar' order by id desc");
+            }
+            
             $dados = $res->fetchAll(PDO::FETCH_ASSOC);
 
             for ($i=0; $i < count($dados); $i++){

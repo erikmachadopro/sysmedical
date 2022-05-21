@@ -19,7 +19,7 @@
     </div>
     <div class="col-md-6 col-sm-12">
         <div class="float-right mr-4">
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" method="post">
                 <input class="form-control-sm mr-sm-2" type="search" placeholder="Nome ou CRM" aria-label="Pesquisar" name="txtbuscar" id="txtbuscar">
                 <button class="btn btn-outline-secondary btn-sm my-2 my-sm-0" name="btn-buscar" id="btn-buscar"><i class="fas fa-search"></i></button>
             </form>
@@ -146,6 +146,25 @@
             success: function(result){
                 $('#listar').html(result)   
             },
+        })
+    })
+</script>
+
+<!-- AJAX PARA BUSCAR DADOS -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#btn-buscar').click(function(event){
+            event.preventDefault();
+
+            $.ajax({
+                url: "medicos/listar.php",
+                method: "post",
+                data: $('form').serialize(),
+                dataType: "html",
+                success: function(result){
+                    $('#listar').html(result)   
+                },
+            })
         })
     })
 </script>

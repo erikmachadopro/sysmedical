@@ -69,7 +69,7 @@
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
                                 <label for="">Nome</label>
-                                <input type="text" class="form-control" id="nome" placeholder="Insira o nome" name="nome">
+                                <input type="text" class="form-control" id="nome" placeholder="Insira o nome" name="nome" required>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
@@ -86,26 +86,26 @@
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label for="">CRM</label>
-                                <input type="text" class="form-control" id="crm" placeholder="Insira o CRM" name="crm">
+                                <input type="text" class="form-control" id="crm" placeholder="Insira o CRM" name="crm" required>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label for="">CPF</label>
-                                <input type="text" class="form-control" id="cpf" placeholder="Insira o CPF" name="cpf">
+                                <input type="text" class="form-control" id="cpf" placeholder="Insira o CPF" name="cpf" required>
                             </div>                    
                         </div>
                         <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label for="">Celular</label>
-                                <input type="text" class="form-control" id="telefone" placeholder="Insira o celular" name="telefone">
+                                <input type="text" class="form-control" id="telefone" placeholder="Insira o celular" name="telefone" required>
                             </div>
                         </div>
                     </div>
                     
                     <div class="form-group">
                         <label for="exampleFormControlInput1">E-mail</label>
-                        <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" name="email">
+                        <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" name="email" required>
                     </div>
 
                     <div id="mensagem" class="col-md-12 text-center mt-3">
@@ -141,6 +141,13 @@
                     $('#mensagem').removeClass()
                     if (mensagem =='Registro inserido com sucesso.') {
                         $('#mensagem').addClass('mensagem-sucesso')
+                        
+                        // LIMPAR CAMPOS APÓS CADASTRO
+                        $('#nome').val('')
+                        $('#crm').val('')
+                        $('#cpf').val('')
+                        $('#telefone').val('')
+                        $('#email').val('')
                     }else{
                         $('#mensagem').addClass('mensagem-erro')
                     }

@@ -112,3 +112,17 @@ navbar a:hover{
 .paginacao{
     margin-top: 25px;
 }
+
+/* MENSAGEM DE CADASTRO  */
+
+.mensagem-sucesso{
+    font-size: 16px;
+    color: #2a9a09;
+    text-align: center;
+}
+
+.mensagem-erro{
+    font-size: 16px;
+    color: #fb2212;
+    text-align: center;
+}

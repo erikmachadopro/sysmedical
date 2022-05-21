@@ -168,3 +168,10 @@
         })
     })
 </script>
+
+<!-- AJAX PARA LISTAR DADOS ENQUANTO DIGITA A BUSCA -->
+<script type="text/javascript">
+    $('#txtbuscar').keyup(function(){
+        $('#btn-buscar').click();
+    })
+</script>

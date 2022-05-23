@@ -133,7 +133,7 @@
                         $('#txtbuscar').val('')
                         $('#btn-buscar').click();
                         // FECHAR MODAL APÓS CADASTRO E ATUALIZAR REGISTROS
-                        $('#btn-fechar').click();
+                        //$('#btn-fechar').click();
 
                     }else{
                         $('#mensagem').addClass('mensagem-erro')

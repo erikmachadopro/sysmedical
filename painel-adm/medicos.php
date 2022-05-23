@@ -128,8 +128,11 @@
                         $('#cpf').val('')
                         $('#telefone').val('')
                         $('#email').val('')
-
+                        
+                        // LIMPAR CAMPOS APÓS CADASTRO E ATUALIZAR REGISTROS
                         $('#txtbuscar').val('')
+                        $('#btn-buscar').click();
+
                     }else{
                         $('#mensagem').addClass('mensagem-erro')
                     }

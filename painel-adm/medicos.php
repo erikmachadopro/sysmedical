@@ -2,7 +2,9 @@
 
 <div class="row">
     <div class="col-md-12 botao-novo">
-        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#modal">Novo Médico</button>
+        <a id="btn-novo" data-toggle="modal" data-target="#modal">
+        </a>
+        <a href="index.php?acao=<?php echo $pagina ?>&funcao=novo" type="button" class="btn btn-secondary">Novo Médico</a>
     </div>
 </div>
 
@@ -99,6 +101,17 @@
         </div> <!-- fim da modal-content  -->
     </div> <!-- fim da modal-dialog -->
 </div> <!-- fim da modal  -->
+
+<!-- CÓDIGO DA FUNÇÃO DO BOTÃO NOVO -->
+<?php
+    if(@$_GET['funcao'] == 'novo'){   
+?>
+    <script>
+        $('#btn-novo').click();
+    </script>
+<?php
+    }
+?>
 
 <!-- MASCARAS -->
 

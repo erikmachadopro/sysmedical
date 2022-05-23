@@ -92,7 +92,7 @@
                     </div>
             </div> <!-- fim da modal-body -->    
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        <button id="btn-fechar" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                         <button name="btn-salvar" id="btn-salvar" class="btn btn-success">Salvar</button>
                     </div>
                 </form>
@@ -128,10 +128,12 @@
                         $('#cpf').val('')
                         $('#telefone').val('')
                         $('#email').val('')
-                        
+
                         // LIMPAR CAMPOS APÓS CADASTRO E ATUALIZAR REGISTROS
                         $('#txtbuscar').val('')
                         $('#btn-buscar').click();
+                        // FECHAR MODAL APÓS CADASTRO E ATUALIZAR REGISTROS
+                        $('#btn-fechar').click();
 
                     }else{
                         $('#mensagem').addClass('mensagem-erro')

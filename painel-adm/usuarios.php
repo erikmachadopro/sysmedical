@@ -145,43 +145,43 @@
     </tbody>
     </table>
 
-<?php
-    // MOSTRAR A PAGINAÇÃO SÓ SE NÃO HOUVER BUSCA
-    if(!isset($_GET[$pagina])){
-?>
-    <!-- AREA DA PAGINAÇÃO -->
-    <nav class="paginacao" aria-label="Navigation">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="btn btn-outline-dark btn-sm mr-1" href="<?php echo $caminho_pag; ?>pagina=0&itens=<?php echo $itens_por_pagina ?>" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            </li>
-            <?php 
-                for($i=0; $i < $num_paginas; $i++){
-                $estilo = "";
-                if($pagina_pag == $i)
-                $estilo = "active";
-            ?>
+    <?php
+        // MOSTRAR A PAGINAÇÃO SÓ SE NÃO HOUVER BUSCA
+        if(!isset($_GET[$pagina])){
+    ?>
+        <!-- AREA DA PAGINAÇÃO -->
+        <nav class="paginacao" aria-label="Navigation">
+            <ul class="pagination">
                 <li class="page-item">
-                    <a class="btn btn-outline-dark btn-sm mr-1 <?php echo $estilo; ?>" href="<?php echo $caminho_pag; ?>pagina=<?php echo $i; ?>&itens=<?php echo $itens_por_pagina ?>"><?php echo $i+1; ?></a>
+                    <a class="btn btn-outline-dark btn-sm mr-1" href="<?php echo $caminho_pag; ?>pagina=0&itens=<?php echo $itens_por_pagina ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
                 </li>
-            <?php 
-                } 
-            ?>
-            
-            <li class="page-item">
-                <a class="btn btn-outline-dark btn-sm" href="<?php echo $caminho_pag; ?>pagina=<?php echo $num_paginas-1; ?>&itens=<?php echo $itens_por_pagina ?>" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-<?php
-    } // FIM DO MOSTRAR A PAGINAÇÃO SÓ SE NÃO HOUVER BUSCA
-?>
+                <?php 
+                    for($i=0; $i < $num_paginas; $i++){
+                    $estilo = "";
+                    if($pagina_pag == $i)
+                    $estilo = "active";
+                ?>
+                    <li class="page-item">
+                        <a class="btn btn-outline-dark btn-sm mr-1 <?php echo $estilo; ?>" href="<?php echo $caminho_pag; ?>pagina=<?php echo $i; ?>&itens=<?php echo $itens_por_pagina ?>"><?php echo $i+1; ?></a>
+                    </li>
+                <?php 
+                    } 
+                ?>
+                
+                <li class="page-item">
+                    <a class="btn btn-outline-dark btn-sm" href="<?php echo $caminho_pag; ?>pagina=<?php echo $num_paginas-1; ?>&itens=<?php echo $itens_por_pagina ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    <?php
+        } // FIM DO MOSTRAR A PAGINAÇÃO SÓ SE NÃO HOUVER BUSCA
+    ?>
 </div>
 
 <!-- MODAL --> 

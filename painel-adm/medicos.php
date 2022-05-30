@@ -13,15 +13,16 @@
         <div class="float-left">
             <label class="registro" for="exampleFormControlSelect1">Registros</label>
             <select class="form-control-sm" id="exampleFormControlSelect1">
-                <option>10</option>
-                <option>25</option>
-                <option>50</option>
+                <option><?php echo $opcao1 ?></option>
+                <option><?php echo $opcao2 ?></option>
+                <option><?php echo $opcao3 ?></option>
             </select>
         </div>
     </div>
     <div class="col-md-6 col-sm-12">
         <div class="float-right mr-4">
-            <form class="form-inline my-2 my-lg-0" method="post">
+            <form id="frm" class="form-inline my-2 my-lg-0" method="post">
+                <input type="hidden" id="pag" name="pag" value="<?php echo @$_GET['pagina'] ?>">
                 <input class="form-control-sm mr-sm-2" type="search" placeholder="Nome ou CRM" aria-label="Pesquisar" name="txtbuscar" id="txtbuscar">
                 <button class="btn btn-outline-secondary btn-sm my-2 my-sm-0" name="btn-buscar" id="btn-buscar"><i class="fas fa-search"></i></button>
             </form>
@@ -34,7 +35,6 @@
 </div> 
 
 <!-- MODAL PARA CADASTRO --> 
-
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -236,20 +236,6 @@
     })
 </script>
 
-<!-- AJAX PARA LISTAR OS DADOS -->
-<script type="text/javascript">
-    $(document).ready(function(){
-        var pag = "<?=$pagina?>";
-        $.ajax({
-            url: pag + "/listar.php",
-            dataType: "html",
-            success: function(result){
-                $('#listar').html(result)   
-            },
-        })
-    })
-</script>
-
 <!-- AJAX PARA BUSCAR DADOS -->
 <script type="text/javascript">
     $(document).ready(function(){
@@ -266,6 +252,22 @@
                     $('#listar').html(result)   
                 },
             })
+        })
+    })
+</script>
+
+<!-- AJAX PARA LISTAR OS DADOS -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        var pag = "<?=$pagina?>";
+        $.ajax({
+            url: pag + "/listar.php",
+            method: "post",
+            data: $('#frm').serialize(),
+            dataType: "html",
+            success: function(result){
+                $('#listar').html(result)   
+            },
         })
     })
 </script>

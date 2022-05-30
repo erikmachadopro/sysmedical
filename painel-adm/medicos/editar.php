@@ -22,8 +22,7 @@
             exit();
         } 
     }
-
-    
+   
         $res = $pdo->prepare("UPDATE medicos set nome = :nome, especialidade = :especialidade, crm = :crm, cpf = :cpf, telefone = :telefone, email = :email where id = :id");
 
         $res->bindValue(":nome", $nome);
@@ -35,7 +34,5 @@
         $res->bindValue(":id", $id);
         $res-> execute();
 
-        echo "Registro editado com sucesso.";
-   
-    
+        echo "Registro editado com sucesso."; 
 ?>

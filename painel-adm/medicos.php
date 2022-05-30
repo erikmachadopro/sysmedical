@@ -73,7 +73,10 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
+                                <!-- CAMPO OCULTO PARA PEGAR O ID PARA EDIÇÃO -->
                                 <input type="hidden"  id="id" name="id" value="<?php echo @$id_registro ?>">
+                                <!-- CAMPO OCULTO PARA VALIDAÇÃO DO CPF PARA EDIÇÃO -->
+                                <input type="hidden"  id="cpf_antigo" name="cpf_antigo" value="<?php echo @$cpf ?>">
                                 <label for="">Nome</label>
                                 <input type="text" class="form-control" id="nome" placeholder="Insira o nome" name="nome" value="<?php echo @$nome ?>" required>
                             </div>

@@ -69,11 +69,7 @@
             $itens_por_pagina = $opcao1;
         }
     ?>
-
-
-
-
-
+    
     <div class="col-md-6 col-sm-12">
         <div class="float-right mr-4">
             <form id="frm" class="form-inline my-2 my-lg-0" method="post">

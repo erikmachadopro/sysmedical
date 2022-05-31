@@ -13,6 +13,13 @@
     $res_c = $pdo->query("select * from medicos where cpf = '$cpf'");
     $dados_c = $res_c->fetchAll(PDO::FETCH_ASSOC);
     $linhas = count($dados_c);
+
+    // VALIDAÇÃO PARA NÃO SALVAR CAMPO VAZIO
+    if($nome == ''){
+        echo "Preencha os dados.";
+        exit();
+    }
+
     if($linhas == 0){
         $res = $pdo->prepare("INSERT into medicos (nome, especialidade, crm, cpf, telefone, email) values (:nome, :especialidade, :crm, :cpf, :telefone, :email)");
 

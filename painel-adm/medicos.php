@@ -11,55 +11,74 @@
 <div class="row mt-4">
     <div class="col-md-6 col-sm-12">
         <div class="float-left">
-            
-        <select onChange="submit();" class="form-control-sm" id="FormControlSelectPagina" name="itens-pagina">
-                <?php
-                    if(isset($_POST['itens-pagina'])){
-                        $item_paginado = $_POST['itens-pagina'];
-                    }elseif(isset($_GET['itens'])){
-                        $item_paginado = $_GET['itens'];
-                    }
-                ?>
-                    <option value="<?php echo @$item_paginado ?>">
-                        <?php echo @$item_paginado ?> Registros
-                    </option>
-                    <?php 
-                        if(@$item_paginado != $opcao1){
-                    ?>
-                        <option value="<?php echo $opcao1 ?>">
-                            <?php echo $opcao1 ?>
-                        </option>
+            <form method="post">
+                <select onChange="submit();" class="form-control-sm" id="FormControlSelectPagina" name="itens-pagina">
                     <?php
-                        }    
+                        if(isset($_POST['itens-pagina'])){
+                            $item_paginado = $_POST['itens-pagina'];
+                        }elseif(isset($_GET['itens'])){
+                            $item_paginado = $_GET['itens'];
+                        }
                     ?>
-
-                    <?php 
-                        if(@$item_paginado != $opcao2){
-                    ?>
-                        <option value="<?php echo $opcao2 ?>">
-                            <?php echo $opcao2 ?>
+                        <option value="<?php echo @$item_paginado ?>">
+                            <?php echo @$item_paginado ?> Registros
                         </option>
-                    <?php
-                        }    
-                    ?>
+                        <?php 
+                            if(@$item_paginado != $opcao1){
+                        ?>
+                            <option value="<?php echo $opcao1 ?>">
+                                <?php echo $opcao1 ?>
+                            </option>
+                        <?php
+                            }    
+                        ?>
 
-                    <?php 
-                        if(@$item_paginado != $opcao3){
-                    ?>
-                        <option value="<?php echo $opcao3 ?>">
-                            <?php echo $opcao3 ?>
-                        </option>
-                    <?php
-                        }    
-                    ?>
-                </select>
+                        <?php 
+                            if(@$item_paginado != $opcao2){
+                        ?>
+                            <option value="<?php echo $opcao2 ?>">
+                                <?php echo $opcao2 ?>
+                            </option>
+                        <?php
+                            }    
+                        ?>
 
+                        <?php 
+                            if(@$item_paginado != $opcao3){
+                        ?>
+                            <option value="<?php echo $opcao3 ?>">
+                                <?php echo $opcao3 ?>
+                            </option>
+                        <?php
+                            }    
+                        ?>
+                    </select>
+            </form>
         </div>
     </div>
+
+    <?php
+        // DEFINIR O NÚMERO DE ITENS POR PÁGINA
+        if(isset($_POST['itens-pagina'])){
+            $itens_por_pagina = $_POST['itens-pagina'];
+            @$_GET['pagina'] = 0;
+        }elseif(isset($_GET['itens'])){
+            $itens_por_pagina = $_GET['itens'];
+        }            
+        else{
+            $itens_por_pagina = $opcao1;
+        }
+    ?>
+
+
+
+
+
     <div class="col-md-6 col-sm-12">
         <div class="float-right mr-4">
             <form id="frm" class="form-inline my-2 my-lg-0" method="post">
                 <input type="hidden" id="pag" name="pag" value="<?php echo @$_GET['pagina'] ?>">
+                <input type="hidden" id="itens" name="itens" value="<?php echo @$itens_por_pagina ?>">
                 <input class="form-control-sm mr-sm-2" type="search" placeholder="Nome ou CRM" aria-label="Pesquisar" name="txtbuscar" id="txtbuscar">
                 <button class="btn btn-outline-secondary btn-sm my-2 my-sm-0" name="btn-buscar" id="btn-buscar"><i class="fas fa-search"></i></button>
             </form>

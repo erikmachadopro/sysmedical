@@ -56,11 +56,16 @@
                     $cpf = @$dados[$i]['cpf'];
                     $telefone = @$dados[$i]['telefone'];
                     $email = @$dados[$i]['email'];
+
+                    // BUSCAR O NOME DA ESPECIALIZAÇÃO
+                    $res_especialidade = $pdo->query("SELECT * from especializacoes where id='$especialidade'");
+                    $dados_especialidade = $res_especialidade->fetchAll(PDO::FETCH_ASSOC);
+                    $nome_especialidade = $dados_especialidade[0]['nome'];
     
                 echo '<tbody>
                         <tr>
                             <td>'.$nome.'</td>
-                            <td>'.$especialidade.'</td>
+                            <td>'.$nome_especialidade.'</td>
                             <td>'.$crm.'</td>
                             <td>'.$cpf.'</td>
                             <td>'.$telefone.'</td>

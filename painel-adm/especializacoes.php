@@ -1,10 +1,10 @@
-<?php $pagina = 'medicos'; ?>
+<?php $pagina = 'especializacoes'; ?>
 
 <div class="row">
     <div class="col-md-12 botao-novo">
         <a id="btn-novo" data-toggle="modal" data-target="#modal">
         </a>
-        <a href="index.php?acao=<?php echo $pagina ?>&funcao=novo" type="button" class="btn btn-secondary">Novo Médico</a>
+        <a href="index.php?acao=<?php echo $pagina ?>&funcao=novo" type="button" class="btn btn-secondary">Nova Especialização</a>
     </div>
 </div>
 
@@ -70,16 +70,12 @@
         }
     ?>
 
-
-
-
-
     <div class="col-md-6 col-sm-12">
         <div class="float-right mr-4">
             <form id="frm" class="form-inline my-2 my-lg-0" method="post">
                 <input type="hidden" id="pag" name="pag" value="<?php echo @$_GET['pagina'] ?>">
                 <input type="hidden" id="itens" name="itens" value="<?php echo @$itens_por_pagina ?>">
-                <input class="form-control-sm mr-sm-2" type="search" placeholder="Nome ou CRM" aria-label="Pesquisar" name="txtbuscar" id="txtbuscar">
+                <input class="form-control-sm mr-sm-2" type="search" placeholder="Especialidade" aria-label="Pesquisar" name="txtbuscar" id="txtbuscar">
                 <button class="btn btn-outline-secondary btn-sm my-2 my-sm-0" name="btn-buscar" id="btn-buscar"><i class="fas fa-search"></i></button>
             </form>
         </div>  
@@ -92,7 +88,7 @@
 
 <!-- MODAL PARA CADASTRO --> 
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">
@@ -113,10 +109,10 @@
                         $telefone = $dados[0]['telefone'];
                         $email = $dados[0]['email'];
 
-                        echo 'Editar Médico'; 
+                        echo 'Editar Especialidade'; 
                         }else{
                         $nome_botao = 'Salvar';
-                        echo 'Cadastro de Médico';
+                        echo 'Cadastro de Especialidade';
                         }
                     ?>
                 </h5>
@@ -125,52 +121,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="post">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <!-- CAMPO OCULTO PARA PEGAR O ID PARA EDIÇÃO -->
-                                <input type="hidden"  id="id" name="id" value="<?php echo @$id_registro ?>">
-                                <!-- CAMPO OCULTO PARA VALIDAÇÃO DO CPF PARA EDIÇÃO -->
-                                <input type="hidden"  id="cpf_antigo" name="cpf_antigo" value="<?php echo @$cpf ?>">
-                                <label for="">Nome</label>
-                                <input type="text" class="form-control" id="nome" placeholder="Insira o nome" name="nome" value="<?php echo @$nome ?>" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <label for="">Especialidade</label>
-                                <select class="form-control" id="especialidade" name="especialidade">
-                                    <option>1</option>
-                                </select>
-                            </div>                    
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4 col-sm-12">
-                            <div class="form-group">
-                                <label for="">CRM</label>
-                                <input type="text" class="form-control" id="crm" placeholder="Insira o CRM" name="crm" value="<?php echo @$crm ?>" required>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-12">
-                            <div class="form-group">
-                                <label for="">CPF</label>
-                                <input type="text" class="form-control" id="cpf" placeholder="Insira o CPF" name="cpf" value="<?php echo @$cpf ?>" required>
-                            </div>                    
-                        </div>
-                        <div class="col-md-4 col-sm-12">
-                            <div class="form-group">
-                                <label for="">Celular</label>
-                                <input type="text" class="form-control" id="telefone" placeholder="Insira o celular" name="telefone" value="<?php echo @$telefone ?>" required>
-                            </div>
-                        </div>
-                    </div>
-                    
+                <form method="post">                 
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">E-mail</label>
-                        <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" name="email" value="<?php echo @$email ?>" required>
+                        <!-- CAMPO OCULTO PARA PEGAR O ID PARA EDIÇÃO -->
+                        <input type="hidden"  id="id" name="id" value="<?php echo @$id_registro ?>">
+                        <!-- CAMPO OCULTO PARA VALIDAÇÃO DO CPF PARA EDIÇÃO -->
+                        <input type="hidden"  id="campo_antigo" name="campo_antigo" value="<?php echo @$nome ?>">
+                        <label for="">Nome Especialidade</label>
+                        <input type="text" class="form-control" id="nome" placeholder="Insira a especialidade" name="nome" value="<?php echo @$nome ?>" required>
                     </div>
 
                     <div id="mensagem" class="col-md-12 text-center mt-3">
@@ -223,9 +181,6 @@
         </button>
       </div>
       <div class="modal-body">
-          
-
-          
         <p>Deseja realmente excluir este registro?</p>
       </div>
       <div class="modal-footer">

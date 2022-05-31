@@ -11,12 +11,49 @@
 <div class="row mt-4">
     <div class="col-md-6 col-sm-12">
         <div class="float-left">
-            <label class="registro" for="exampleFormControlSelect1">Registros</label>
-            <select class="form-control-sm" id="exampleFormControlSelect1">
-                <option><?php echo $opcao1 ?></option>
-                <option><?php echo $opcao2 ?></option>
-                <option><?php echo $opcao3 ?></option>
-            </select>
+            
+        <select onChange="submit();" class="form-control-sm" id="FormControlSelectPagina" name="itens-pagina">
+                <?php
+                    if(isset($_POST['itens-pagina'])){
+                        $item_paginado = $_POST['itens-pagina'];
+                    }elseif(isset($_GET['itens'])){
+                        $item_paginado = $_GET['itens'];
+                    }
+                ?>
+                    <option value="<?php echo @$item_paginado ?>">
+                        <?php echo @$item_paginado ?> Registros
+                    </option>
+                    <?php 
+                        if(@$item_paginado != $opcao1){
+                    ?>
+                        <option value="<?php echo $opcao1 ?>">
+                            <?php echo $opcao1 ?>
+                        </option>
+                    <?php
+                        }    
+                    ?>
+
+                    <?php 
+                        if(@$item_paginado != $opcao2){
+                    ?>
+                        <option value="<?php echo $opcao2 ?>">
+                            <?php echo $opcao2 ?>
+                        </option>
+                    <?php
+                        }    
+                    ?>
+
+                    <?php 
+                        if(@$item_paginado != $opcao3){
+                    ?>
+                        <option value="<?php echo $opcao3 ?>">
+                            <?php echo $opcao3 ?>
+                        </option>
+                    <?php
+                        }    
+                    ?>
+                </select>
+
         </div>
     </div>
     <div class="col-md-6 col-sm-12">

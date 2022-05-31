@@ -20,7 +20,15 @@
                 </thead>'; 
 
                 // DEFINIR O NÚMERO DE ITENS POR PÁGINA
-                $itens_por_pagina = $opcao1;
+                if(isset($_POST['itens-pagina'])){
+                    $itens_por_pagina = $_POST['itens-pagina'];
+                    @$_GET['pagina'] = 0;
+                }elseif(isset($_GET['itens'])){
+                    $itens_por_pagina = $_GET['itens'];
+                }            
+                else{
+                    $itens_por_pagina = $opcao1;
+                }
 
                 // PEGAR A PÁGINA ATUAL
                 $pagina_pag = intval(@$_POST['pag']);

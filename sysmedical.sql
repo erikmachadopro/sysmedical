@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 31-Maio-2022 às 13:17
+-- Tempo de geração: 31-Maio-2022 às 13:57
 -- Versão do servidor: 5.7.33
 -- versão do PHP: 7.4.19
 
@@ -38,7 +38,8 @@ CREATE TABLE `especializacoes` (
 
 INSERT INTO `especializacoes` (`id`, `nome`) VALUES
 (1, 'Pediatra'),
-(2, 'Ortopedia');
+(2, 'Ortopedia'),
+(6, 'ClÃ­nico Geral');
 
 -- --------------------------------------------------------
 
@@ -143,13 +144,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de tabela `especializacoes`
 --
 ALTER TABLE `especializacoes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `medicos`
 --
 ALTER TABLE `medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

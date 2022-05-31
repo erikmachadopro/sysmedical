@@ -1,7 +1,7 @@
 <?php
 
     require_once("../../conexao.php");
-    $pagina = 'medicos'; 
+    $pagina = 'especializacoes'; 
 
     $txtbuscar = @$_POST['txtbuscar'];
     

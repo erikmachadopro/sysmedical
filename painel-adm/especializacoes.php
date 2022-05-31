@@ -99,15 +99,10 @@
                         $id_registro = $_GET['id'];
 
                         // BUSCAR DADOS DO REGISTRO A SER EDITADO
-                        $res = $pdo->query("select * from medicos where id = '$id_registro'");
+                        $res = $pdo->query("select * from especializacoes where id = '$id_registro'");
                         $dados = $res->fetchAll(PDO::FETCH_ASSOC);
 
                         $nome = $dados[0]['nome'];
-                        $especialidade = $dados[0]['especialidade'];
-                        $crm = $dados[0]['crm'];
-                        $cpf = $dados[0]['cpf'];
-                        $telefone = $dados[0]['telefone'];
-                        $email = $dados[0]['email'];
 
                         echo 'Editar Especialidade'; 
                         }else{

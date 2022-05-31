@@ -109,19 +109,6 @@
                         $telefone = $dados[0]['telefone'];
                         $email = $dados[0]['email'];
 
-                        // USADO PARA RETORNAR O NOME DA ESPECIALIDADE NO CAMPO OPTION ESPECIALIDADE
-
-                        $res_espec = $pdo->query("SELECT * from especializacoes where id = '$especialidade'");
-                        $dados_espec = $res_espec->fetchAll(PDO::FETCH_ASSOC);
-
-                        for ($i=0; $i < count($dados_espec); $i++){
-                            foreach ($dados_espec[$i] as $key => $value){
-                                
-                            }
-                            $id_espec = @$dados_espec[$i]['id'];
-                            $nome_espec = @$dados_espec[$i]['nome'];
-                        } 
-
                         echo 'Editar Médico'; 
                         }else{
                         $nome_botao = 'Salvar';
@@ -152,9 +139,27 @@
                                 <select class="form-control" id="especialidade" name="especialidade">
                                     
                                     <?php
+
+                                    
                                         // SE EXISTIR EDIÇÃO DE DADOS, TRAZER COMO PRIMEIRO REGISTRO A ESPECIALIZAÇÃO DO MÉDICO
 
-                                        echo '<option value="'.$id_espec.'">'.$nome_espec.'</option>';
+                                        if(@$_GET['funcao'] == 'editar'){
+
+                                        // USADO PARA RETORNAR O NOME DA ESPECIALIDADE NO CAMPO OPTION ESPECIALIDADE
+
+                                        $res_espec = $pdo->query("SELECT * from especializacoes where id = '$especialidade'");
+                                        $dados_espec = $res_espec->fetchAll(PDO::FETCH_ASSOC);
+
+                                        for ($i=0; $i < count($dados_espec); $i++){
+                                            foreach ($dados_espec[$i] as $key => $value){
+                                                
+                                            }
+                                            $id_espec = @$dados_espec[$i]['id'];
+                                            $nome_espec = @$dados_espec[$i]['nome'];
+                                        } 
+
+                                            echo '<option value="'.$id_espec.'">'.$nome_espec.'</option>';
+                                        }
 
                                         // TRAZER TODOS OS REGISTROS DE ESPECIALIZAÇÕES
                                         $res = $pdo->query("SELECT * from especializacoes order by nome asc");
@@ -167,7 +172,9 @@
                                             $id = @$dados[$i]['id'];
                                             $nome = @$dados[$i]['nome'];
                                 
-                                        echo   '<option value="'.$id.'">'.$nome.'</option>';
+                                            if($nome_espec != $nome){
+                                                echo '<option value="'.$id.'">'.$nome.'</option>';
+                                            }
                                         } 
                                     ?>
                                 </select>

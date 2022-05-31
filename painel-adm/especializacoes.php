@@ -137,7 +137,7 @@
             </div> <!-- fim da modal-body -->    
                     <div class="modal-footer">
                         <button id="btn-fechar" type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                        <button name="<?php echo $nome_botao ?>" id="<?php echo $nome_botao ?>" class="btn btn-success"><?php echo $nome_botao ?></button>
+                        <button type="submit" name="<?php echo $nome_botao ?>" id="<?php echo $nome_botao ?>" class="btn btn-success"><?php echo $nome_botao ?></button>
                     </div>
                 </form>
         </div> <!-- fim da modal-content  -->

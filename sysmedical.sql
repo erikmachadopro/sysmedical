@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 30-Maio-2022 às 14:28
+-- Tempo de geração: 31-Maio-2022 às 13:17
 -- Versão do servidor: 5.7.33
 -- versão do PHP: 7.4.19
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `sysmedical`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `especializacoes`
+--
+
+CREATE TABLE `especializacoes` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `especializacoes`
+--
+
+INSERT INTO `especializacoes` (`id`, `nome`) VALUES
+(1, 'Pediatra'),
+(2, 'Ortopedia');
 
 -- --------------------------------------------------------
 
@@ -46,10 +65,6 @@ INSERT INTO `medicos` (`id`, `nome`, `especialidade`, `crm`, `cpf`, `telefone`, 
 (2, 'MÃ©dico 2', 1, 'GO/123452', '111.111.111-12', '(11) 11111-1112', 'medico2@teste.com'),
 (18, 'MÃ©dico 3', 1, 'GO/123453', '111.111.111-13', '(11) 11111-1113', 'medico3@teste.com'),
 (23, 'mÃ©dico 5', 1, 'GO/123455', '111.111.111-15', '(11) 11111-1115', 'medico5@teste.com'),
-(24, 'MÃ©dico 4', 1, 'GO/123454', '111.111.111-14', '(11) 11111-1114', 'medico4@teste.com'),
-(25, 'MÃ©dico 6', 1, 'GO/123456', '111.111.111-16', '(11) 11111-1116', 'medico6@teste.com'),
-(26, 'MÃ©dico 7', 1, 'GO/123457', '111.111.111-17', '(11) 11111-1117', 'medico7@teste.com'),
-(27, 'MÃ©dico 8', 1, 'GO/123458', '111.111.111-18', '(11) 11111-1118', 'medico8@teste.com'),
 (28, 'Pedro', 1, 'GO/123459', '111.111.111-19', '(11) 11111-1119', 'pedro@teste.com'),
 (31, 'Julia', 1, 'GO/123460', '111.111.111-60', '(11) 11111-1160', 'julia@teste.com'),
 (33, 'Lucas', 1, 'GO/123461', '111.111.111-61', '(11) 11111-1161', 'lucas@teste.com'),
@@ -60,7 +75,8 @@ INSERT INTO `medicos` (`id`, `nome`, `especialidade`, `crm`, `cpf`, `telefone`, 
 (38, 'Lais', 1, 'GO/123467', '111.111.111-67', '(11) 11111-1167', 'lais@teste.com'),
 (39, 'Francisco', 1, 'GO/123468', '111.111.111-68', '(11) 11111-1168', 'francisco@teste.com'),
 (40, 'Julio', 1, 'GO/123469', '111.111.111-69', '(11) 11111-1169', 'julio@teste.com'),
-(41, 'Barbara', 1, 'GO/123470', '111.111.111-70', '(11) 11111-1170', 'barbara@teste.com');
+(41, 'Barbara', 1, 'GO/123470', '111.111.111-70', '(11) 11111-1170', 'barbara@teste.com'),
+(42, 'Leticia Teste', 1, 'GO/123450', '111.111.150-50', '(11) 11111-1150', 'leticia@teste.com');
 
 -- --------------------------------------------------------
 
@@ -102,6 +118,12 @@ INSERT INTO `usuarios` (`id`, `nome`, `usuario`, `senha`, `senha_original`, `niv
 --
 
 --
+-- Índices para tabela `especializacoes`
+--
+ALTER TABLE `especializacoes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `medicos`
 --
 ALTER TABLE `medicos`
@@ -118,10 +140,16 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de tabela `especializacoes`
+--
+ALTER TABLE `especializacoes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT de tabela `medicos`
 --
 ALTER TABLE `medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

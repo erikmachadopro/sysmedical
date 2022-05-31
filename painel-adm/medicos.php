@@ -69,7 +69,7 @@
             $itens_por_pagina = $opcao1;
         }
     ?>
-    
+
     <div class="col-md-6 col-sm-12">
         <div class="float-right mr-4">
             <form id="frm" class="form-inline my-2 my-lg-0" method="post">
@@ -137,7 +137,20 @@
                             <div class="form-group">
                                 <label for="">Especialidade</label>
                                 <select class="form-control" id="especialidade" name="especialidade">
-                                    <option>1</option>
+                                <?php
+                                    $res = $pdo->query("SELECT * from especializacoes order by nome asc");
+                                    $dados = $res->fetchAll(PDO::FETCH_ASSOC);
+
+                                    for ($i=0; $i < count($dados); $i++){
+                                        foreach ($dados[$i] as $key => $value){
+                                            
+                                        }
+                                        $id = @$dados[$i]['id'];
+                                        $nome = @$dados[$i]['nome'];
+                               
+                                    echo   '<option value="'.$id.'">'.$nome.'</option>';
+                                    } 
+                                    ?>
                                 </select>
                             </div>                    
                         </div>

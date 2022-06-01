@@ -1,7 +1,7 @@
 <?php
 
     require_once("../../conexao.php");
-    $pagina = 'especializacoes'; 
+    $pagina = 'recepcionistas'; 
 
     $txtbuscar = @$_POST['txtbuscar'];
     
@@ -9,7 +9,10 @@
             <table class="table table-sm">
                 <thead class="thead-light">
                     <tr>
-                        <th scope="col">Especialização</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">CPF</th>
+                        <th scope="col">Telefone</th>
+                        <th scope="col">Turno</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>'; 
@@ -24,16 +27,16 @@
                 $caminho_pag = 'index.php?acao='.$pagina.'&';
         
                 if($txtbuscar == ''){
-                    $res = $pdo->query("SELECT * from especializacoes order by id desc LIMIT $limite, $itens_por_pagina");
+                    $res = $pdo->query("SELECT * from recepcionistas order by id desc LIMIT $limite, $itens_por_pagina");
                 }else{
                     $txtbuscar = '%'.@$_POST['txtbuscar'].'%';
-                    $res = $pdo->query("SELECT * from especializacoes where nome LIKE '$txtbuscar' order by id desc");
+                    $res = $pdo->query("SELECT * from recepcionistas where nome LIKE '$txtbuscar' or cpf = '$txtbuscar' order by id desc");
                 }
                 
                 $dados = $res->fetchAll(PDO::FETCH_ASSOC);
 
                 // TOTALIZAR OS REGISTROS PARA PAGINAÇÃO
-                $res_todos = $pdo->query("SELECT * from especializacoes");
+                $res_todos = $pdo->query("SELECT * from recepcionistas");
                 $dados_total = $res_todos->fetchAll(PDO::FETCH_ASSOC);
                 $num_total = count($dados_total);
 
@@ -46,10 +49,16 @@
                     }
                     $id = @$dados[$i]['id'];
                     $nome = @$dados[$i]['nome'];
+                    $cpf = @$dados[$i]['cpf'];
+                    $telefone = @$dados[$i]['telefone'];
+                    $turno = @$dados[$i]['turno'];
     
                 echo '<tbody>
                         <tr>
                             <td>'.$nome.'</td>
+                            <td>'.$cpf.'</td>
+                            <td>'.$telefone.'</td>
+                            <td>'.$turno.'</td>
                             <td><a href="index.php?acao='.$pagina.'&funcao=editar&id='.$id.'"><i class="fas fa-edit text-info"></i></a>
                                 <a href="index.php?acao='.$pagina.'&funcao=excluir&id='.$id.'"><i class="far fa-trash-alt text-danger"></i></a>
                             </td>

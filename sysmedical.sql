@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Tempo de geração: 31-Maio-2022 às 13:57
+-- Tempo de geração: 31-Maio-2022 às 20:05
 -- Versão do servidor: 5.7.33
 -- versão do PHP: 7.4.19
 
@@ -76,8 +76,10 @@ INSERT INTO `medicos` (`id`, `nome`, `especialidade`, `crm`, `cpf`, `telefone`, 
 (38, 'Lais', 1, 'GO/123467', '111.111.111-67', '(11) 11111-1167', 'lais@teste.com'),
 (39, 'Francisco', 1, 'GO/123468', '111.111.111-68', '(11) 11111-1168', 'francisco@teste.com'),
 (40, 'Julio', 1, 'GO/123469', '111.111.111-69', '(11) 11111-1169', 'julio@teste.com'),
-(41, 'Barbara', 1, 'GO/123470', '111.111.111-70', '(11) 11111-1170', 'barbara@teste.com'),
-(42, 'Leticia Teste', 1, 'GO/123450', '111.111.150-50', '(11) 11111-1150', 'leticia@teste.com');
+(41, 'Barbara Santos', 1, 'GO/123470', '111.111.111-70', '(11) 11111-1170', 'barbara@teste.com'),
+(42, 'Leticia Teste', 1, 'GO/123450', '111.111.150-50', '(11) 11111-1150', 'leticia@teste.com'),
+(44, 'MÃ©dico 6', 6, 'GO/123456', '111.111.111-56', '(11) 11111-1156', 'medico6@teste.com'),
+(45, 'MÃ©dico 7', 2, 'GO/123457', '111.111.111-17', '(11) 11111-1117', 'medico7@teste.com');
 
 -- --------------------------------------------------------
 
@@ -150,7 +152,7 @@ ALTER TABLE `especializacoes`
 -- AUTO_INCREMENT de tabela `medicos`
 --
 ALTER TABLE `medicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de tabela `usuarios`

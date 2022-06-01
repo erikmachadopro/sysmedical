@@ -5,7 +5,7 @@
 
     $txtbuscar = @$_POST['txtbuscar'];
     
-    echo '<div class="table-responsive-sm mt-3">
+    echo '<div class="table-responsive-sm mt-3 tabelas">
             <table class="table table-sm">
                 <thead class="thead-light">
                     <tr>

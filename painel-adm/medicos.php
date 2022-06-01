@@ -140,7 +140,6 @@
                                     
                                     <?php
 
-                                    
                                         // SE EXISTIR EDIÇÃO DE DADOS, TRAZER COMO PRIMEIRO REGISTRO A ESPECIALIZAÇÃO DO MÉDICO
 
                                         if(@$_GET['funcao'] == 'editar'){
@@ -203,6 +202,25 @@
                         </div>
                     </div>
                     
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">E-mail</label>
+                                <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" name="email" value="<?php echo @$email ?>" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="">Turno</label>
+                                    <select class="form-control" id="turno" name="turno">
+                                        <option value="Manhã">Manhã</option>
+                                        <option value="Tarde">Tarde</option>
+                                        <option value="Noite">Noite</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label for="exampleFormControlInput1">E-mail</label>
                         <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" name="email" value="<?php echo @$email ?>" required>

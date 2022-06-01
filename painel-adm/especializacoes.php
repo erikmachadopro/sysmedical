@@ -141,7 +141,7 @@
 
 <!-- CHAMADA DA MODAL NOVO -->
 <?php
-    if(@$_GET['funcao'] == 'novo'){   
+    if(@$_GET['funcao'] == 'novo' && @$item_paginado == ''){   
 ?>
     <script>
         $('#btn-novo').click();
@@ -152,7 +152,7 @@
 
 <!-- CHAMADA DA MODAL EDITAR -->
 <?php
-    if(@$_GET['funcao'] == 'editar'){   
+    if(@$_GET['funcao'] == 'editar' && @$item_paginado == ''){   
 ?>
     <script>
         $('#btn-novo').click();
@@ -163,7 +163,7 @@
 
 <!-- CHAMADA DA MODAL EXCLUIR -->
 <?php
-    if(@$_GET['funcao'] == 'excluir'){  
+    if(@$_GET['funcao'] == 'excluir' && @$item_paginado == ''){  
         $id = $_GET['id']; 
 ?>
  <div class="modal fade" id="modal-deletar" tabindex="-1" role="dialog">

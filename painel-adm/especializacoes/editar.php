@@ -1,6 +1,6 @@
 <?php
 
-    include_once("../../conexao.php");
+    require_once("../../conexao.php");
 
     $nome = $_POST['nome'];
 
@@ -25,4 +25,6 @@
 
     $res->bindValue(":id", $id);
     $res-> execute();
+
+    echo "Registro editado com sucesso."
 ?>

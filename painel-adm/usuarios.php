@@ -245,7 +245,7 @@
 
 <!-- CÓDIGO DA FUNÇÃO DO BOTÃO NOVO -->
 <?php
-    if(@$_GET['funcao'] == 'novo'){   
+    if(@$_GET['funcao'] == 'novo' && @$item_paginado == ''){   
 ?>
     <script>
         $('#btn-novo').click();
@@ -289,7 +289,7 @@
 
 <!-- CÓDIGO DA FUNÇÃO DO BOTÃO EDITAR -->
 <?php
-    if(@$_GET['funcao'] == 'editar'){
+    if(@$_GET['funcao'] == 'editar' && @$item_paginado == ''){
 
 ?>
     <script>
@@ -338,7 +338,7 @@
 
 <!-- CÓDIGO DA FUNÇÃO DO BOTÃO EXCLUIR -->
 <?php
-    if(@$_GET['funcao'] == 'excluir'){
+    if(@$_GET['funcao'] == 'excluir'  && @$item_paginado == ''){
         $id_usuario = $_GET['id'];
 
         $res = $pdo->query("DELETE from usuarios where id = '$id_usuario'");

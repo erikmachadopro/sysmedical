@@ -35,4 +35,6 @@
         $res->bindValue(":turno", $turno);
         $res->bindValue(":id", $id);
         $res-> execute();
+
+        echo "Registro editado com sucesso."
 ?>

@@ -219,9 +219,18 @@
                                         echo '<option value="'.$turno.'">'.$turno.'</option>';
                                     }
                                 ?>
-                                        <option value="Tarde">Manhã</option>
-                                        <option value="Tarde">Tarde</option>
-                                        <option value="Noite">Noite</option>
+                                <?php
+                                    if($turno != 'Manhã')
+                                        echo '<option value="Manhã">Manhã</option>';
+                                ?>
+                                <?php
+                                    if($turno != 'Tarde')
+                                        echo '<option value="Tarde">Tarde</option>';
+                                ?>
+                                <?php
+                                    if($turno != 'Noite')
+                                        echo '<option value="Noite">Noite</option>';
+                                ?>
                                     </select>
                             </div>
                         </div>

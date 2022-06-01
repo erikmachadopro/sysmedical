@@ -34,6 +34,11 @@
             header("location:painel-medico/index.php");
             exit();
         }
+
+        if($_SESSION['nivel_usuario'] == 'atendente'){
+            header("location:painel-atend/index.php");
+            exit();
+        }
         
     } else{
         echo "<script language='javascript'>

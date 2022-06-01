@@ -8,6 +8,7 @@
     $cpf = $_POST['cpf'];
     $telefone = $_POST['telefone'];
     $email = $_POST['email'];
+    $turno = $_POST['turno'];
 
     // VERIFICAR SE O USUÁRIO JÁ ESTÁ CADASTRADO
     $res_c = $pdo->query("select * from medicos where cpf = '$cpf'");
@@ -21,7 +22,7 @@
     }
 
     if($linhas == 0){
-        $res = $pdo->prepare("INSERT into medicos (nome, especialidade, crm, cpf, telefone, email) values (:nome, :especialidade, :crm, :cpf, :telefone, :email)");
+        $res = $pdo->prepare("INSERT into medicos (nome, especialidade, crm, cpf, telefone, email, turno) values (:nome, :especialidade, :crm, :cpf, :telefone, :email, :turno)");
 
         $res->bindValue(":nome", $nome);
         $res->bindValue(":especialidade", $especialidade);
@@ -29,6 +30,7 @@
         $res->bindValue(":cpf", $cpf);
         $res->bindValue(":telefone", $telefone);
         $res->bindValue(":email", $email);
+        $res->bindValue(":turno", $turno);
         $res-> execute();
 
         echo "Registro inserido com sucesso.";

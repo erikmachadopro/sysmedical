@@ -14,7 +14,7 @@
                         <th scope="col">CRM</th>
                         <th scope="col">CPF</th>
                         <th scope="col">Telefone</th>
-                        <th scope="col">E-mail</th>
+                        <th scope="col">Turno</th>
                         <th scope="col">Ações</th>
                     </tr>
                 </thead>'; 
@@ -55,7 +55,7 @@
                     $crm = @$dados[$i]['crm'];
                     $cpf = @$dados[$i]['cpf'];
                     $telefone = @$dados[$i]['telefone'];
-                    $email = @$dados[$i]['email'];
+                    $turno = @$dados[$i]['turno'];
 
                     // BUSCAR O NOME DA ESPECIALIZAÇÃO
                     $res_especialidade = $pdo->query("SELECT * from especializacoes where id='$especialidade'");
@@ -69,7 +69,7 @@
                             <td>'.$crm.'</td>
                             <td>'.$cpf.'</td>
                             <td>'.$telefone.'</td>
-                            <td>'.$email.'</td>
+                            <td>'.$turno.'</td>
                             <td><a href="index.php?acao='.$pagina.'&funcao=editar&id='.$id.'"><i class="fas fa-edit text-info"></i></a>
                                 <a href="index.php?acao='.$pagina.'&funcao=excluir&id='.$id.'"><i class="far fa-trash-alt text-danger"></i></a>
                             </td>
@@ -80,9 +80,6 @@
                 </table> ';
 
                 if($txtbuscar == ''){
-
-                   
-
                echo '
                 <!-- AREA DA PAGINAÇÃO -->
                 <nav class="paginacao" aria-label="Navigation">

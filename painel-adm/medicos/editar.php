@@ -10,6 +10,7 @@
     $email = $_POST['email'];
     $id = $_POST['id'];
     $cpf_antigo = $_POST['cpf_antigo'];
+    $turno = $_POST['turno'];
 
     if($cpf_antigo != $cpf){
         // VERIFICAR SE O MÉDICO JÁ ESTÁ CADASTRADO
@@ -23,7 +24,7 @@
         } 
     }
    
-        $res = $pdo->prepare("UPDATE medicos set nome = :nome, especialidade = :especialidade, crm = :crm, cpf = :cpf, telefone = :telefone, email = :email where id = :id");
+        $res = $pdo->prepare("UPDATE medicos set nome = :nome, especialidade = :especialidade, crm = :crm, cpf = :cpf, telefone = :telefone, email = :email, turno = :turno where id = :id");
 
         $res->bindValue(":nome", $nome);
         $res->bindValue(":especialidade", $especialidade);
@@ -31,6 +32,7 @@
         $res->bindValue(":cpf", $cpf);
         $res->bindValue(":telefone", $telefone);
         $res->bindValue(":email", $email);
+        $res->bindValue(":turno", $turno);
         $res->bindValue(":id", $id);
         $res-> execute();
 

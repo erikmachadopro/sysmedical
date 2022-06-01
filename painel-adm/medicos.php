@@ -108,6 +108,7 @@
                         $cpf = $dados[0]['cpf'];
                         $telefone = $dados[0]['telefone'];
                         $email = $dados[0]['email'];
+                        $turno = $dados[0]['turno'];
 
                         echo 'Editar Médico'; 
                         }else{
@@ -213,7 +214,12 @@
                             <div class="form-group">
                                 <label for="">Turno</label>
                                     <select class="form-control" id="turno" name="turno">
-                                        <option value="Manhã">Manhã</option>
+                                    <?php
+                                    if(@$_GET['funcao'] == 'editar'){
+                                        echo '<option value="'.$turno.'">'.$turno.'</option>';
+                                    }
+                                ?>
+                                        <option value="Tarde">Manhã</option>
                                         <option value="Tarde">Tarde</option>
                                         <option value="Noite">Noite</option>
                                     </select>

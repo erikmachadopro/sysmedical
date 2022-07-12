@@ -1,7 +1,7 @@
 # sysmedical
 Repositório do Sistema Hospitalar Sysmedical em PHP7 com PDO
 <br><br>
-Veja as outras branchs para ver a evolução do sistema.
+Veja as outras branchs para acompanhar a evolução do sistema.
 <br><br>
 <strong>Link do sistema:</strong> http://erikmachadopro.com/sysmedical
 <br><br>

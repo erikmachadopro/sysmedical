@@ -10,7 +10,3 @@ Veja as outras branchs para acompanhar a evolução do sistema.
 <strong>Administrador</strong><br>
 <strong>Usuário:</strong> teste@teste.com<br>
 <strong>Senha:</strong> 123<br><br>
-
-<strong>Médico</strong><br>
-<strong>Usuário:</strong> medico@teste.com <br>
-<strong>Senha:</strong> 123<br>
